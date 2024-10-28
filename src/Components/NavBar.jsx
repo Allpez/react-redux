@@ -2,16 +2,23 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const routes = [{ to: "/products", text: "PRODUCTS" }];
+const routes = { to: "/products", text: "PRODUCTS" };
 
 const Navbar = () => {
+  const cartItems = [];
+  const totalItems = 0;
+
   return (
     <nav style={styles.nav}>
-      {routes.map((r) => (
-        <NavLink to={r.to} style={styles.link}>
-          {r.text}
-        </NavLink>
-      ))}
+      <NavLink to={routes.to} style={styles.link}>
+        {routes.text}
+      </NavLink>
+      <NavLink to="/cart" style={styles.link}>
+        CART 🛒 ({totalItems})
+      </NavLink>
+      <button onClick={()=>handleCleanCart} style={styles.button}>
+        Clean Cart
+      </button>
     </nav>
   );
 };

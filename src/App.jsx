@@ -3,6 +3,7 @@ import React from 'react';
 import ProductsPage from './Pages/ProductsPage';
 import NotFound from './Pages/NotFound';
 import StandarLayout from "./Layout/StandarLayout";
+import CartPage from "./Pages/CartPage";
 
 const router = createBrowserRouter([
   {
@@ -11,6 +12,14 @@ const router = createBrowserRouter([
       {
         path: "/products",
         element:  <ProductsPage />,
+      },
+      {
+        path: "/",
+        element:  <ProductsPage />,
+      },
+      {
+        path: "/cart",
+        element: <CartPage />,
       }
     ],
   },

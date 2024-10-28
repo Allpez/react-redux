@@ -1,12 +1,20 @@
 
-const ProductFilter = ({category, handleCategoryChange, search, handleSearchChange}) => {
+const ProductFilter = () => {
+  const { filter, setFilter } = useContext(FilterContext);
 
+  const handleCategoryChange = (e) => {
+    setFilter((prev) => ({ ...prev, category: e.target.value }));
+  };
+
+  const handleSearchChange = (e) => {
+    setFilter((prev) => ({ ...prev, search: e.target.value }));
+  };
 
   return (
     <div style={styles.container}>
       <label style={styles.label}>
         Categoría:
-        <select value={category} onChange={(e)=>handleCategoryChange(e.target.value)} style={styles.select}>
+        <select value={filter.category} onChange={handleCategoryChange} style={styles.select}>
           <option value="Todas">Todas</option>
           <option value="Zapatos">Zapatos</option>
           <option value="Camisetas">Camisetas</option>
@@ -18,8 +26,8 @@ const ProductFilter = ({category, handleCategoryChange, search, handleSearchChan
         Buscar:
         <input
           type="text"
-          value={search}
-          onChange={(e) => handleSearchChange(e.target.value)}
+          value={filter.search}
+          onChange={handleSearchChange}
           placeholder="Buscar productos..."
           style={styles.input}
         />

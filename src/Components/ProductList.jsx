@@ -1,7 +1,11 @@
 // components/ProductList.js
+import React, { useContext } from 'react';
+import { FilterContext,initialProducts } from '../context/FilterContext';
 
-const ProductList = ({items,category,search}) => {
-  
+const ProductList = () => {
+  const { filter } = useContext(FilterContext);
+
+  const items = initialProducts;
 
   const filteredItems = items.filter((item) => {
     const matchesCategory = category === 'Todas' || item.category === category;
@@ -17,7 +21,7 @@ const ProductList = ({items,category,search}) => {
           <h3>{product.name}</h3>
           <p>Categoría: {product.category}</p>
           <p>Precio: ${product.price.toFixed(2)}</p>
-          <button onClick={() => handleAddToCart(product)} style={styles.button}>
+          <button onClick={()=>handleAddToCart} style={styles.button}>
             Añadir al Carrito
           </button>
         </div>
